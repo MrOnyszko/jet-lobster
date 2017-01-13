@@ -8,9 +8,18 @@ It's fast and easy to use.
 
 ## Usage
 
+Clone repo and run bundle install (I assume that you have ruby and bundler).
+
 ```bash
-ruby jet_lobster.rb --help
-ruby jet_lobster.rb -t token -m "Fancy message"
+$ ruby jet_lobster.rb --help
+Usage: jet_lobster.rb [options]
+JetLobster APNS Notifier
+Options:
+    -t, --token TOKEN                device token
+    -m, --message MESSAGE            notification message
+    -x, --host HOST                  APNS host default is gateway.sandbox.push.apple.com
+    -o, --port PORT                  APNS port, default is 2195
+    -p, --pem PATH                   Path to pem file
 ```
 
 ## License
