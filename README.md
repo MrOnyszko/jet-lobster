@@ -15,13 +15,13 @@ $ ruby jet_lobster.rb --help
 Usage: jet_lobster.rb [options]
 JetLobster local APNs testing tool
 Options:
-    -t, --token TOKEN                device token
+    -t, --token TOKEN                Device token
     -m, --message MESSAGE            Notification message
-    -x, --host HOST                  APNS host, default is gateway.sandbox.push.apple.com
-    -o, --port PORT                  APNS port, default is 2195
+    -x, --host HOST                  APNs host, default is gateway.sandbox.push.apple.com
+    -o, --port PORT                  APNs port, default is 2195
     -p, --pem PATH                   Path to pem file
     -b, --badge VALUE                Badge value, default is 1
-        --other HASH                 Additional data sent with notification, deafult is a empty Hash
+        --other HASH                 Additional data sent with notification, default is a empty Hash
 ```
 
 ## License
