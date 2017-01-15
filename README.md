@@ -1,6 +1,6 @@
 ## Synopsis
 
-JetLobster is a simple tool for APNS testing.
+JetLobster local APNs testing tool.
 
 ## Motivation
 
@@ -13,13 +13,15 @@ Clone repo and run bundle install (I assume that you have ruby and bundler).
 ```bash
 $ ruby jet_lobster.rb --help
 Usage: jet_lobster.rb [options]
-JetLobster APNS Notifier
+JetLobster local APNs testing tool
 Options:
     -t, --token TOKEN                device token
-    -m, --message MESSAGE            notification message
-    -x, --host HOST                  APNS host default is gateway.sandbox.push.apple.com
+    -m, --message MESSAGE            Notification message
+    -x, --host HOST                  APNS host, default is gateway.sandbox.push.apple.com
     -o, --port PORT                  APNS port, default is 2195
     -p, --pem PATH                   Path to pem file
+    -b, --badge VALUE                Badge value, default is 1
+        --other HASH                 Additional data sent with notification, deafult is a empty Hash
 ```
 
 ## License

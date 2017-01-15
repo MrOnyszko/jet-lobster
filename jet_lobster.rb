@@ -1,46 +1,61 @@
 #!/usr/bin/env ruby
 
-# Jet Lobster APNS Notifier
+# JetLobster local APNs testing tool.
 # @author Sławomir Onyszko <slawomir.onyszko@gmail.com>
 
 require 'optparse'
 require 'apns'
 
-options = {device_token: '', message: '', host: nil, pem: './JetLobster.pem', port: 2195}
+options = {device_token: nil, message: nil, host: nil, pem: './JetLobster.pem', port: 2195, badge: 1, other: {}}
 
 OptionParser.new do |option|
 
   option.banner = 'Usage: jet_lobster.rb [options]'
-  option.separator 'JetLobster APNS Notifier'
+  option.separator 'JetLobster local APNs testing tool'
   option.separator 'Options:'
   
-  option.on('-t', '--token TOKEN', 'device token') do |t|
-    options[:device_token] = t
+  option.on('-t', '--token TOKEN', 'Device token') do |value|
+    options[:device_token] = value
   end
 
-  option.on('-m', '--message MESSAGE', 'notification message') do |m|
-    options[:message] = m
+  option.on('-m', '--message MESSAGE', 'Notification message') do |value|
+    options[:message] = value
   end
 
-  option.on('-x', '--host HOST', 'APNS host default is gateway.sandbox.push.apple.com') do |x|
-    options[:host] = x
+  option.on('-x', '--host HOST', 'APNs host, default is gateway.sandbox.push.apple.com') do |value|
+    options[:host] = value
   end
 
-  option.on('-o', '--port PORT', 'APNS port, default is 2195') do |o|
-    options[:pem] = o
+  option.on('-o', '--port PORT', 'APNs port, default is 2195') do |value|
+    options[:pem] = value
   end
 
-  option.on('-p', '--pem PATH', 'Path to pem file') do |p|
-    options[:pem] = p
+  option.on('-p', '--pem PATH', 'Path to pem file') do |value|
+    options[:pem] = value
+  end
+
+  option.on('-b', '--badge VALUE', 'Badge value, default is 1') do |value|
+    options[:badge] = value
+  end
+
+  option.on('--other HASH', 'Additional data sent with notification, default is a empty Hash') do |value|
+    options[:badge] = value
   end
 
 end.parse!
 
-unless options[:host].nil? 
-	APNS.host = options[:host]
+unless options[:host].nil?
+  APNS.host = options[:host]
 end
 
 APNS.pem = options[:pem]
 APNS.port = options[:port]
 
-APNS.send_notification(options[:device_token], :alert => options[:message], :badge => 1, :sound => 'default')
+unless options[:token].nil? and options[:message].nil?
+  APNS.send_notification(options[:device_token], :alert => options[:message], :badge => options[:badge], :sound => 'default', :other => options[:other])
+  puts "Notification was sent"
+else 
+  puts 'Device token and message is required'
+  puts 'run ruby jest_lobster.rb --help for more information'
+end
+
