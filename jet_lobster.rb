@@ -38,7 +38,7 @@ OptionParser.new do |option|
     options[:badge] = value
   end
 
-  option.on('--other HASH', 'Additional data sent with notification, default is a empty Hash') do |value|
+  option.on('--other HASH', 'Additional data sent with notification, default is an empty Hash') do |value|
     options[:badge] = value
   end
 

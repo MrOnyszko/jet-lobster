@@ -21,7 +21,7 @@ Options:
     -o, --port PORT                  APNs port, default is 2195
     -p, --pem PATH                   Path to pem file
     -b, --badge VALUE                Badge value, default is 1
-        --other HASH                 Additional data sent with notification, default is a empty Hash
+        --other HASH                 Additional data sent with notification, default is an empty Hash
 ```
 
 ## License
