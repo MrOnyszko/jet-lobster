@@ -8,7 +8,7 @@ It's fast and easy to use.
 
 ## Usage
 
-Clone repo and run bundle install (I assume that you have ruby and bundler).
+Clone repo and run *bundle install* (I assume that you have ruby and bundler).
 
 ```bash
 $ ruby jet_lobster.rb --help
